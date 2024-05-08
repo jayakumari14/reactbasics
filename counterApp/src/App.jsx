@@ -1,14 +1,19 @@
 import { useState } from "react";
 
 function App() {
-  const [counter, setcounter] = useState(15);
+  const [counter, setCounter] = useState(0);
 
   const addValue = () => {
-    setcounter(counter + 1);
+    if (counter < 20) {
+      setCounter((prevCounter) => Math.min(prevCounter + 1, 20));
+    }
   };
   const removeValue = () => {
-    setcounter(counter - 1);
+    if (counter > 0) {
+      setCounter((prevCounter) => Math.max(prevCounter - 1, 0));
+    }
   };
+
   return (
     <>
       <h1>Counter App</h1>
